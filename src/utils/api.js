@@ -1,8 +1,8 @@
-const API_URL = "http://localhost:5003";
+const API_URL = "http://localhost:5003/users";
 
 export const signup = async (username, email, password) => {
   try {
-    const response = await fetch("http://localhost:5003/users/signup", {
+    const response = await fetch("http://localhost:5003/users/users/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export const signup = async (username, email, password) => {
 
 export const login = async (username, password) => {
   try {
-    const response = await fetch("http://localhost:5003/users/login", {
+    const response = await fetch("http://localhost:5003/users/users/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -1,0 +1,35 @@
+.messages-container {
+  overflow-y: auto;
+  max-height: 300px;
+}
+
+.message {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.message.sent {
+  justify-content: flex-end;
+}
+
+.avatar {
+  margin-right: 8px;
+}
+
+.avatar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.message-content {
+  background-color: #f0f0f0;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.timestamp {
+  font-size: 12px;
+  color: #888;
+}

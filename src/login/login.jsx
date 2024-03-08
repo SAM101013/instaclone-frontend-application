@@ -19,7 +19,6 @@ const Login = ({ onLogin }) => {
       });
 
       if (response.ok) {
-        // Call the onLogin function passed from the parent
         onLogin();
       } else {
         setError("Invalid username or password");

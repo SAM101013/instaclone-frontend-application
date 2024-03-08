@@ -5,13 +5,11 @@ import Signup from "../signUp/signUp";
 const LogOrSign = ({ handleLogin, handleSignup }) => {
   // Function to handle login
   const handleLoginClick = () => {
-    // Call the handleLogin function passed from the parent component
     handleLogin();
   };
 
   // Function to handle signup
   const handleSignupClick = () => {
-    // Call the handleSignup function passed from the parent component
     handleSignup();
   };
 
