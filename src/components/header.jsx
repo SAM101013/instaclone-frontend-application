@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import instaLogo from "../assets/instaLogo.png";
-import "./header.css";
+import "../App.scss";
 
 const Header = () => {
   return (
@@ -9,28 +9,25 @@ const Header = () => {
       <div className="container">
         <div className="logo">
           <Link to="/home">
-            {" "}
-            {/* Add Link to the home page */}
             <img src={instaLogo} alt="Instagram" />
           </Link>
         </div>
         <nav className="navbar">
           <ul className="nav-links">
             <li className="nav-item">
-              <Link to="/home">Home</Link> {/* Link to home page */}
+              <Link to="/home">Home</Link>
             </li>
             <li className="nav-item">
-              <Link to="/explore">Explore</Link> {/* Link to explore page */}
+              <Link to="/explore">Explore</Link>
             </li>
             <li className="nav-item">
-              <Link to="/notifications">Notifications</Link>{" "}
-              {/* Link to notifications page */}
+              <Link to="/notifications">Notifications</Link>
             </li>
             <li className="nav-item">
-              <Link to="/messages">Messages</Link> {/* Link to messages page */}
+              <Link to="/messages">Messages</Link>
             </li>
             <li className="nav-item">
-              <Link to="/profile">Profile</Link> {/* Link to profile page */}
+              <Link to="/profile">Profile</Link>
             </li>
           </ul>
         </nav>

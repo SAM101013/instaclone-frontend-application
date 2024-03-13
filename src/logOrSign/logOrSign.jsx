@@ -1,51 +1,83 @@
 import React, { useState } from "react";
-import Login from "../login/login";
-import Signup from "../signUp/signUp";
+import { signup, login } from "../utils/api.js";
 
-const LogOrSign = ({ handleLogin, handleSignup }) => {
-  const [isLoggingIn, setIsLoggingIn] = useState(true);
-  const [error, setError] = useState(null);
+const LogOrSign = () => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLogin, setIsLogin] = useState(true); // Default to login mode
 
-  // Function to handle login
-  const handleLoginClick = () => {
-    setIsLoggingIn(true);
-    setError(null); // Clear any previous errors
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      // Call the login API function
+      const data = await login(username, password);
+      // Redirect to profile page or perform other actions based on the response
+      console.log("Login success:", data);
+    } catch (error) {
+      console.error("Error logging in:", error);
+      // Handle login error
+    }
   };
 
-  // Function to handle signup
-  const handleSignupClick = () => {
-    setIsLoggingIn(false);
-    setError(null); // Clear any previous errors
-  };
-
-  // Function to handle login error
-  const handleLoginError = (errorMessage) => {
-    setError(errorMessage);
-    console.error("Error logging in:", errorMessage);
-  };
-
-  // Function to handle signup error
-  const handleSignupError = (errorMessage) => {
-    setError(errorMessage);
-    console.error("Error signing up:", errorMessage);
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    try {
+      // Call the signup API function
+      const data = await signup(username, email, password);
+      // Redirect to profile page or perform other actions based on the response
+      console.log("Signup success:", data);
+    } catch (error) {
+      console.error("Error signing up:", error);
+      // Handle signup error
+    }
   };
 
   return (
-    <div className="logOrSign-wrapper">
-      <div className="logOrSign-container">
-        <div className="logOrSign-box">
-          {isLoggingIn ? (
-            <Login onLogin={handleLogin} onError={handleLoginError} />
-          ) : (
-            <Signup onSignup={handleSignup} onError={handleSignupError} />
-          )}
-        </div>
-        <div className="logOrSign-box">
-          <button onClick={handleLoginClick}>Login</button>
-          <button onClick={handleSignupClick}>Signup</button>
-        </div>
-        {error && <p className="error-message">{error}</p>}
-      </div>
+    <div>
+      {isLogin ? (
+        <form onSubmit={handleLogin}>
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button type="submit">Login</button>
+        </form>
+      ) : (
+        <form onSubmit={handleSignup}>
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button type="submit">Sign Up</button>
+        </form>
+      )}
+      {/* Toggle between login and sign up forms */}
+      <button onClick={() => setIsLogin(!isLogin)}>
+        {isLogin ? "Switch to Sign Up" : "Switch to Login"}
+      </button>
     </div>
   );
 };

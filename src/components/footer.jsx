@@ -5,7 +5,7 @@ import exploreIcon from "../assets/6.png";
 import notificationsIcon from "../assets/2.png";
 import messagesIcon from "../assets/5.png";
 import profileIcon from "../assets/4.png";
-import "./footer.css";
+import "../App.scss";
 
 const Footer = () => {
   return (

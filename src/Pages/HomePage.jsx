@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Home from "../components/Home.jsx";
-import "../components/Home.scss";
+import "../App.scss";
 
 const HomePage = () => {
   const [images, setImages] = useState([]);

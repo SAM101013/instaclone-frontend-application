@@ -8,7 +8,7 @@ const Profile = () => {
     const fetchPhotos = async () => {
       try {
         const response = await fetch(
-          "https://api.unsplash.com/photos/?page=1&client_id=YOUR_UNSPLASH_ACCESS_KEY"
+          "https://api.unsplash.com/photos/?page=1&client_id=zBKrkBSfPhNr0zP2Lg10joYvq-X8sn26p8fS8-gmYkw"
         );
         const data = await response.json();
         setPhotos(data);
