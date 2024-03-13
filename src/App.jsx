@@ -5,20 +5,24 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import "./App.css";
-import LogOrSign from "./logOrSign/logOrSign";
-import Header from "./header";
-import HomePage from "./Pages/HomePage";
+import "./App.scss";
+import LogOrSign from "./logOrSign/logOrSign.jsx";
+import Header from "./components/header.jsx";
+import HomePage from "./Pages/HomePage.jsx";
+import Profile from "./Pages/Profile.jsx";
+import Explore from "./Pages/Explore.jsx";
+import Messages from "./Pages/messages.jsx";
+import Notifications from "./Pages/Notifications.jsx";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // Function to handle login
+  // handle login
   const handleLogin = () => {
     setIsLoggedIn(true);
   };
 
-  // Function to handle  signup
+  // handle signup
   const handleSignup = () => {
     setIsLoggedIn(true);
   };
@@ -40,9 +44,15 @@ function App() {
             />
           )}
 
-          {isLoggedIn && <Route path="/home" element={<HomePage />} />}
+          {isLoggedIn && <Route path="/Home" element={<HomePage />} />}
+          {isLoggedIn && <Route path="/Profile" element={<Profile />} />}
+          {isLoggedIn && <Route path="/Explore" element={<Explore />} />}
+          {isLoggedIn && <Route path="/Messages" element={<Messages />} />}
+          {isLoggedIn && (
+            <Route path="/Notifications" element={<Notifications />} />
+          )}
 
-          {isLoggedIn && <Route path="/" element={<Navigate to="/home" />} />}
+          {isLoggedIn && <Route path="/" element={<Navigate to="/Home" />} />}
         </Routes>
       </div>
     </Router>

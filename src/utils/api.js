@@ -1,8 +1,8 @@
-const API_URL = "http://localhost:5003/users";
+const API_URL = "http://localhost:5004";
 
 export const signup = async (username, email, password) => {
   try {
-    const response = await fetch("http://localhost:5003/users/users/signup", {
+    const response = await fetch(`${API_URL}/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export const signup = async (username, email, password) => {
 
 export const login = async (username, password) => {
   try {
-    const response = await fetch("http://localhost:5003/users/users/login", {
+    const response = await fetch(`${API_URL}/users/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -34,7 +34,15 @@ export const login = async (username, password) => {
   }
 };
 
-export default {
-  signup: `${API_URL}/users/signup`,
-  login: `${API_URL}/users/login`,
+export const getAllUsers = async () => {
+  try {
+    const response = await fetch(`${API_URL}/users/getAllUsers`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error getting all users:", error);
+    throw error;
+  }
 };
+
+export default { signup, login, getAllUsers };
